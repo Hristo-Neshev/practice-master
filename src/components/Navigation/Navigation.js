@@ -6,6 +6,7 @@ function Navigation(props) {
     const guestNav = (
         <ul className='header-nav-ul'>
             <li><a href="#">Регистрация</a></li>
+            <li><a href="#">Вход</a></li>
             <li><a href="#">За Practice Master</a></li>
         </ul>
     );

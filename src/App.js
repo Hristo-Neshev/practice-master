@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import './App.css';
 
 function App() {
-  let [loggedIn, setLoggedIn] = useState(true);
+  let [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className="App">

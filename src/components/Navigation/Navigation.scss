@@ -6,11 +6,16 @@
     display: flex;
     justify-content: space-between;
     
+ 
+
     li a {
         color: whitesmoke;
         margin-left: 20px;
-        :hover {
+        padding: 4px;
+        &:hover {
             border-bottom: 1px solid whitesmoke;
         }
     }
+
+  
 }

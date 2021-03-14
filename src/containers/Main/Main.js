@@ -7,7 +7,7 @@ function Main(props) {
 
     return(
        <main className="main">
-          <About/>
+          {/* <About/> */}
           <Home loggedIn={loggedIn}/>
        </main>
     );

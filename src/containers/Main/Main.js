@@ -8,8 +8,8 @@ function Main(props) {
     return(
        <main className="main">
           <Home loggedIn={loggedIn}/>
-          <About/>
        </main>
+         
     );
 }
 

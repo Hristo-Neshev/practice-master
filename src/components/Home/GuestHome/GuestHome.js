@@ -1,8 +1,10 @@
 import './GuestHome.scss';
-
+import { Fragment } from 'react';
+import About from '../../About/About';
 function GuestHome(props) {
     return (
-        <section className="guest-home">
+      <Fragment>
+            <section className="guest-home">
             <section className="guest-heading">
                 <h1>Practice Master</h1>
                 <p>Работи Ефективно</p>
@@ -10,7 +12,9 @@ function GuestHome(props) {
             <section className="btn-controls">
                 <button className="start-now"><a href="#">Започни сега!</a></button>
             </section>
-        </section>
+          </section>
+          <About/>
+      </Fragment>
     )
 }
 

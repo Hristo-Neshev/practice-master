@@ -9,7 +9,6 @@ function GuestHome(props) {
             </section>
             <section className="btn-controls">
                 <button className="start-now"><a href="#">Започни сега!</a></button>
-                <button className=" start-now learn-more"><a href="#">Научи повече</a></button>
             </section>
         </section>
     )

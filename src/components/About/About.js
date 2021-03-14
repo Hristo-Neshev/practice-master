@@ -13,7 +13,7 @@ function About() {
                         <li><i class="fas fa-check"></i>Поставяне на конкретни цели</li>
                         <li><i class="fas fa-check"></i>По-лесна организация на ежедневната работа</li>
                         <li><i class="fas fa-check"></i>Водене на бележки</li>
-                        <li><i class="fas fa-check"></i>Следене на както на новите, както и готовите пиеси от репертоара</li>
+                        <li><i class="fas fa-check"></i>Следене на както на новите, така и готовите пиеси от репертоара</li>
                         <li><i class="fas fa-check"></i>Планиране на концерти и други изяви пред публика</li>
                     </ul>
                 </section>

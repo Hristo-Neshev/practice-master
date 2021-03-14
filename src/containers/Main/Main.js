@@ -1,5 +1,5 @@
 import './Main.scss';
-import About from '../About/About';
+import About from '../../components/About/About';
 
 function Main(props) {
     const loggedIn = props.loggedIn;

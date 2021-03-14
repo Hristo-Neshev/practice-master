@@ -1,6 +1,6 @@
 import './Header.scss';
-import Logo from '../componentElements/Logo/Logo';
-import Navigation from '../componentElements/Navigation/Navigation';
+import Logo from '../../components/componentElements/Logo/Logo';
+import Navigation from '../../components/componentElements/Navigation/Navigation';
 
 function Header(props) {
 

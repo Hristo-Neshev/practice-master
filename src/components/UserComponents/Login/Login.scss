@@ -1,0 +1,115 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 120px;
+     
+    h1 {
+        text-align: center;
+        color: #3980A0;
+        margin: 20px auto;
+        font-style: italic;
+        border-bottom: 1px solid #3980A0;
+        font-weight: bold;
+        font-size: 32px;
+    }
+}
+
+.login {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    margin: 10px auto;
+    border: 1px solid black;
+    border-radius: 12px;
+    background-image: url('../../../assets/images/header-footer-background.jpg');
+
+
+    .img-container {
+        flex-basis: 50%;
+       img {
+        height: 100%;
+        width: 100%;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+       }
+    }
+
+    .form-container {
+       display: flex;
+      align-items: center;
+    flex-basis: 50%;
+     
+    }
+
+    .login-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin:10px auto;
+        
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 8px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid whitesmoke;
+            color: whitesmoke;
+            font-size: 18px;
+            font-style: italic;
+
+            &::placeholder {
+                color: whitesmoke;
+                font-size: 18px;
+                font-style: italic;
+                text-align: center;
+            }
+        }
+
+        .input-btn {
+            color: whitesmoke;
+            padding: 12px 20px;
+            background-color: #3980A0;
+            border: 1px solid whitesmoke;
+            border-radius: 12px;
+            width: 30%;
+            margin-top: 30px;
+
+            &:hover {
+                font-weight: bold;
+                border: 2px solid whitesmoke;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.create-new-acc {
+    color: #3980A0;
+
+    h2 {
+    font-style: italic;
+    border-bottom: 1px solid #3980A0;
+    font-size: 28px;
+       }
+
+       p {
+            text-align: center;
+       }
+
+    a {
+    color: #3980A0;
+    font-weight: bold;
+    margin-left: 6px;
+    }
+}
+  
+
+  
+        
+

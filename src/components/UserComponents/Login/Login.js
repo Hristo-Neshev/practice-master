@@ -3,7 +3,7 @@ import './Login.scss';
 function Login(props) {
     return (
         <article className="login-container">
-            <h1>Влез</h1>
+            <h1>Вход</h1>
             <section className="login">
                 <div className="img-container">
                     <img src="music-notes.jpg" alt="img" />
@@ -17,7 +17,7 @@ function Login(props) {
                 </div>
             </section>
             <div className='create-new-acc'>
-                <h1>Нямаш профил?</h1>
+                <h2>Нямаш профил?</h2>
                 <p> Създай нов профил<a href="#">ТУК</a></p>
             </div>
         </article>

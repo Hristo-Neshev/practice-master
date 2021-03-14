@@ -106,6 +106,10 @@
     color: #3980A0;
     font-weight: bold;
     margin-left: 6px;
+
+        &:hover {
+            border-bottom: 1px solid #3980A0;
+        }
     }
 }
   

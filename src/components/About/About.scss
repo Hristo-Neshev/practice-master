@@ -21,6 +21,12 @@
         margin: 0 auto;
     }
 
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .benefits {
         margin: 30px auto;
         width: 60%;
@@ -57,5 +63,24 @@
         i {
             margin-right: 15px;
         }
+    }
+
+    .start-now {
+        background-color: #3980A0;
+        color: whitesmoke;
+        margin-bottom:30px;
+        padding: 20px 30px;
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-right: 20px;
+        border: 1px solid black;
+
+        &:hover {
+          font-weight: bold;
+            cursor: pointer;
+            align-self: center;
+        }
+        
     }
 }

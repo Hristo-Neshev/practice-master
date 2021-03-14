@@ -17,6 +17,7 @@ function About() {
                         <li><i class="fas fa-check"></i>Планиране на концерти и други изяви пред публика</li>
                     </ul>
                 </section>
+                <button className="start-now">Регистрирай се!</button>
             </article>
         </section>
     );

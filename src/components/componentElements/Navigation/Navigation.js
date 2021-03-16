@@ -14,6 +14,7 @@ function Navigation(props) {
         <ul className='header-nav-ul'>
             <li><NavLink to="/repertoire">Репертоар</NavLink></li>
             <li><NavLink to="/concerts">Концерти</NavLink></li>
+            <li><NavLink to="/notes">Бележки</NavLink></li>
             <li><NavLink to="/logout">Изход</NavLink></li>
         </ul>
     )

@@ -6,7 +6,7 @@ import Footer from './containers/Footer/Footer';
 import './App.css';
 
 function App() {
-  let [loggedIn, setLoggedIn] = useState(true);
+  let [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className="App">

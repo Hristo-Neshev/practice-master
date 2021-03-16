@@ -1,4 +1,4 @@
-.login-container {
+.user-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@
     }
 }
 
-.login {
+.user-form {
     width: 80%;
     height: 60%;
     display: flex;
@@ -44,7 +44,7 @@
      
     }
 
-    .login-form{
+    .user-form-form{
         display: flex;
         flex-direction: column;
         align-items: center;

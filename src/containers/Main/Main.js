@@ -1,5 +1,5 @@
 import './Main.scss';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from '../../components/Home/Home';
 import Login from '../../components/UserComponents/Login/Login';
@@ -12,8 +12,12 @@ function Main(props) {
       <main className="main">
       <Switch>
       <Route path='/' exact><Home loggedIn={loggedIn}/></Route>
-        <Route path='/register' component={Register}/>
-        <Route path='/login' component={Login}/>
+        <Route path='/register' render={()=> (
+           loggedIn ? <Redirect to='/'/> : (<Register/>)
+        )}/>
+          <Route path='/login' render={()=> (
+           loggedIn ? <Redirect to='/'/> : (<Login/>)
+        )}/>
       </Switch>
       </main>
 

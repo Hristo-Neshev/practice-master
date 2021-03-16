@@ -1,4 +1,5 @@
 import './Login.scss';
+import { Link } from 'react-router-dom';
 
 function Login(props) {
     return (
@@ -18,7 +19,7 @@ function Login(props) {
             </section>
             <div className='create-new-acc'>
                 <h2>Нямаш профил?</h2>
-                <p> Създай нов профил<a href="#">ТУК</a></p>
+                <p> Създай нов профил<Link to="/register">ТУК</Link></p>
             </div>
         </article>
     )

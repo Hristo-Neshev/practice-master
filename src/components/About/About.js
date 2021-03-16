@@ -1,4 +1,5 @@
 import './About.scss';
+import { Link } from 'react-router-dom';
 
 function About() {
     const aboutText = " е органайзер за музиканти. Помага за по-добра организация на работният процес както при професионалисти, така и при начинаещи. Добро помощно средства за учениците от детските музикални школи, както и за тези от музикалните училища."
@@ -17,7 +18,7 @@ function About() {
                         <li><i class="fas fa-check"></i>Планиране на концерти и други изяви пред публика</li>
                     </ul>
                 </section>
-                <button className="start-now"><a href="#">Регистрирай се!</a></button>
+                <button className="start-now">  <li><Link to="/register">Регистрирай се</Link></li></button>
             </article>
         </section>
     );

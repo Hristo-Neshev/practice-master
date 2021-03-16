@@ -1,4 +1,5 @@
 import './Register.scss';
+import { Link } from 'react-router-dom';
 
 function Register(props) {
     return (
@@ -19,7 +20,7 @@ function Register(props) {
             </section>
             <div className='create-new-acc'>
                 <h2>Вече имаш профил?</h2>
-                <p> Влез<a href="#">ТУК</a></p>
+                <p> Влез<Link to="/login">ТУК</Link></p>
             </div>
         </article>
     )

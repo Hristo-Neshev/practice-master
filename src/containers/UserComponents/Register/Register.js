@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link, Redirect } from 'react-router-dom';
+import * as userServices from '../../../services/userServices';
 
 import './Register.scss';
 import Notification from '../../../components/UI/Notification/Notification';
@@ -10,6 +11,7 @@ function Register(props) {
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
     const [notificationMessage, setNotificationMessage] = useState(null);
+    const [successfulReg, setSuccessfulReg] = useState(false);
 
 
     const onChangeEmailHandler = (e) => {
@@ -33,11 +35,29 @@ function Register(props) {
             return;
         }
 
-        setNotificationMessage(null);
-        console.log('Success reg');
+        userServices.register(email, password)
+        .then(response => response.json())
+        .then(resData => {
+           if(resData.email) {
+            userServices.setToLocalStorage(resData.email, resData.localId, resData.idToken, resData.expiresIn, resData.refreshToken);
+            setSuccessfulReg(true);
+            
+           } else {
+               console.log(resData);
+               setNotificationMessage('Възникна грешка!')
+           }
+        })
+        .catch(error => {
+            setNotificationMessage(error.message);
+            setSuccessfulReg(false);
+        })
     }
 
-  
+    if (successfulReg) {
+        return <Redirect to="/login" />
+    }
+
+
 
     return (
         <article className="user-form-container">

@@ -1,18 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Header from './containers/Header/Header';
 import Main from './containers/Main/Main';
 import Footer from './containers/Footer/Footer';
 import './App.css';
 
+import * as userServices from './services/userServices';
+
 function App() {
-  let [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+ const changeLoginState = (bool) => {
+    setLoggedIn(bool);
+  }
+
+
+
+
+
+
+
 
   return (
     <div className="App">
-      <Header loggedIn={loggedIn}/>
-      <Main loggedIn={loggedIn}/>
-      <Footer/>
+      <Header loggedIn={loggedIn} changeAppState={changeLoginState} />
+      <Main loggedIn={loggedIn} changeAppState={changeLoginState} />
+      <Footer />
 
     </div>
   );

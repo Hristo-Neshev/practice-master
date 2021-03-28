@@ -17,10 +17,10 @@ function Main(props) {
          <Switch>
             <Route path='/' exact><Home loggedIn={loggedIn} /></Route>
             <Route path='/register' render={() => (
-               loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner/>}><Register /></Suspense>)
+               loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner/>}><Register/></Suspense>)
             )} />
             <Route path='/login' render={() => (
-               loggedIn ? <Redirect to='/' /> : (<Login />)
+               loggedIn ? <Redirect to='/' /> : (<Login  changeLoginState={props.changeAppState}/>)
             )} />
             <Route component={NotFound}></Route>
          </Switch>

@@ -17,5 +17,18 @@
         }
     }
 
+    .nav-btn {
+        background-color: transparent;
+        color: whitesmoke;
+        overflow: hidden;
+        border: none;
+        font-size: 14px;
+        margin-left: 6px;
+
+        &:hover {
+            border-bottom: 1px solid whitesmoke;
+        }
+    }
+
   
 }

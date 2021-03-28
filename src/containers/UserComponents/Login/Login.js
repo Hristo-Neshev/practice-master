@@ -11,7 +11,7 @@ function Login(props) {
                 </div>
                 <div className="form-container">
                     <form action="" className="user-form-form">
-                        <input type="text" placeholder="Име" />
+                        <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Парола" />
                         <input className='input-btn' type="submit" value="Влез" />
                     </form>

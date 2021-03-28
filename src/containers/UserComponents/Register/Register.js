@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Register.scss';
-
+import Notification from '../../../components/UI/Notification/Notification';
 
 
 function Register(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
+    const [notificationMessage, setNotificationMessage] = useState(null);
 
 
-   const onChangeEmailHandler = (e) => {
+    const onChangeEmailHandler = (e) => {
         setEmail(e.target.value);
     }
     const onChangePasswordHandler = (e) => {
@@ -23,14 +24,25 @@ function Register(props) {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(email);
-        console.log(password);
-        console.log(rePassword);
+        if (password.length < 6) {
+            setNotificationMessage('Паролата трябва да е с дължина поне 6 символа!');
+            return;
+        }
+        if (password !== rePassword) {
+            setNotificationMessage('Паролите трябва да  съвпадат!');
+            return;
+        }
+
+        setNotificationMessage(null);
+        console.log('Success reg');
     }
+
+  
 
     return (
         <article className="user-form-container">
             <h1>Създай профил</h1>
+            <Notification notificationMessage={notificationMessage} />
             <section className="user-form">
                 <div className="img-container">
                     <img src="music-notes.jpg" alt="img" />

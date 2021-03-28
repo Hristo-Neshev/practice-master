@@ -1,18 +1,46 @@
 import './Login.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import Notification from '../../../components/UI/Notification/Notification';
 
 function Login(props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [notificationMessage, setNotificationMessage] = useState(null);
+
+
+    const onChangeEmailHandler = (e) => {
+        setEmail(e.target.value);
+    }
+    const onChangePasswordHandler = (e) => {
+        setPassword(e.target.value);
+    }
+
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+      console.log('email' + email);
+      console.log('pass' + password);
+     
+      
+
+      
+       
+    }
+
     return (
         <article className="user-form-container">
             <h1>Вход</h1>
+            <Notification notificationMessage={notificationMessage} />
             <section className="user-form">
                 <div className="img-container">
                     <img src="music-notes.jpg" alt="img" />
                 </div>
                 <div className="form-container">
-                    <form action="" className="user-form-form">
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Парола" />
+                <form onSubmit={onSubmitHandler} className="user-form-form">
+                        <input type="email" placeholder="Email" id="email" name="email" value={email} onChange={onChangeEmailHandler} />
+                        <input type="password" placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
                         <input className='input-btn' type="submit" value="Влез" />
                     </form>
                 </div>

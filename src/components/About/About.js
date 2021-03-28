@@ -11,11 +11,11 @@ function About() {
                 <section className="benefits">
                     <h2>Practice Master помага за:</h2>
                     <ul className='benefits-list'>
-                        <li><i class="fas fa-check"></i>Поставяне на конкретни цели</li>
-                        <li><i class="fas fa-check"></i>По-лесна организация на ежедневната работа</li>
-                        <li><i class="fas fa-check"></i>Водене на бележки</li>
-                        <li><i class="fas fa-check"></i>Следене на както на новите, така и готовите пиеси от репертоара</li>
-                        <li><i class="fas fa-check"></i>Планиране на концерти и други изяви пред публика</li>
+                        <li><i className="fas fa-check"></i>Поставяне на конкретни цели</li>
+                        <li><i className="fas fa-check"></i>По-лесна организация на ежедневната работа</li>
+                        <li><i className="fas fa-check"></i>Водене на бележки</li>
+                        <li><i className="fas fa-check"></i>Следене на както на новите, така и готовите пиеси от репертоара</li>
+                        <li><i className="fas fa-check"></i>Планиране на концерти и други изяви пред публика</li>
                     </ul>
                 </section>
                 <button className="start-now">  <li><Link to="/register">Регистрирай се</Link></li></button>

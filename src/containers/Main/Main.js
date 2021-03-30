@@ -7,6 +7,7 @@ import Login from '../UserComponents/Login/Login';
 import NotFound from '../../components/NotFound/NotFound';
 import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner';
 const Register = lazy(()=> import('../UserComponents/Register/Register') );
+const Repertoire = lazy(()=> import('./Repertoire/Repertoire'));
 
 function Main(props) {
    const loggedIn = props.loggedIn;
@@ -21,6 +22,9 @@ function Main(props) {
             )} />
             <Route path='/login' render={() => (
                loggedIn ? <Redirect to='/' /> : (<Login  changeLoginState={props.changeAppState}/>)
+            )} />
+               <Route path='/repertoire' render={() => (
+               !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner/>}><Repertoire/></Suspense>)
             )} />
             <Route component={NotFound}></Route>
          </Switch>

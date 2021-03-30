@@ -25,7 +25,7 @@ function Login(props) {
         userServices.login(email, password)
             .then(response => response.json())
             .then(resData => {
-                console.log(resData);
+                // console.log(resData);
                if(resData.email) {
                 userServices.setToLocalStorage(resData.email, resData.localId, resData.idToken, resData.expiresIn, resData.refreshToken);
                 setSuccessfulLogin(true);

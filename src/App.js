@@ -10,9 +10,15 @@ import * as userServices from './services/userServices';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
- const changeLoginState = (bool) => {
+  const user = userServices.getLocalUserData();
+ useEffect(()=> {
+   setLoggedIn(user !== null);
+ }, [loggedIn]);
+ 
+  const changeLoginState = (bool) => {
     setLoggedIn(bool);
   }
+
 
 
 

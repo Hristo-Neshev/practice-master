@@ -10,11 +10,15 @@ import * as userServices from './services/userServices';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const user = userServices.getLocalUserData();
- useEffect(()=> {
-   setLoggedIn(user !== null);
- }, [loggedIn]);
- 
+
+  useEffect(()=> {
+    const user = userServices.getLocalUserData();
+    console.log('app useeffect + ', user );
+    if(user.token !== null) {
+      setLoggedIn(true);
+    }
+  },[])
+
   const changeLoginState = (bool) => {
     setLoggedIn(bool);
   }

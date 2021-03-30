@@ -61,7 +61,7 @@ function Login(props) {
                 <div className="form-container">
                     <form onSubmit={onSubmitHandler} className="user-form-form">
                         <input type="email" placeholder="Email" id="email" name="email" value={email} onChange={onChangeEmailHandler} />
-                        <input type="password" placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
+                        <input type="password"  placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
                         <input className='input-btn' type="submit" value="Влез" />
                     </form>
                 </div>

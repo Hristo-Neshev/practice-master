@@ -69,7 +69,7 @@ function Register(props) {
                 </div>
                 <div className="form-container">
                     <form onSubmit={onSubmitHandler} className="user-form-form">
-                        <input type="email" placeholder="Email" id="email" name="email" value={email} onChange={onChangeEmailHandler} />
+                        <input type="email" required placeholder="Email" id="email" name="email" value={email} onChange={onChangeEmailHandler} />
                         <input type="password" minLength="6" placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
                         <input type="password" minLength="6" placeholder="Повтори парола" id="rePassword" name="rePassword" value={rePassword} onChange={onChangeRePasswordHandler} />
                         <input className='input-btn' type="submit" value="Влез" />

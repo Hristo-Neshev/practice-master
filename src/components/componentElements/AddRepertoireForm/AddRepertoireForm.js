@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 
 import Notification from '../../UI/Notification/Notification';
 import { getLocalUserData } from '../../../services/userServices';
+import './AddRepertoireForm.scss';
 
 
 const AddRepertoireForm = (props) => {
     const [title, setTitle] = useState('');
     const [composer, setComposer] = useState('');
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
+    const [minutes, setMinutes] = useState('минути');
+    const [seconds, setSeconds] = useState('секунди');
 
     const [notificationMessage, setNotificationMessage] = useState(null);
     const userData = getLocalUserData();
@@ -56,14 +57,11 @@ const AddRepertoireForm = (props) => {
             <h2>Добави произведение</h2>
             <Notification notificationMessage={notificationMessage} />
             <form onSubmit={onAddRepertoireSubmitHandler}>
-                <label htmlFor="title">Заглавие</label>
                 <input type="text" required name="title" id="title" placeholder="Заглавие" onChange={onInputChangeHandler} value={title} />
-                <label htmlFor="composer">Композитор</label>
                 <input type="text" required name="composer" id="composer" placeholder="Композитор" onChange={onInputChangeHandler} value={composer} />
-                <label htmlFor="minutes">Дължина</label>
                 <input type="number" min="0" max="59" name="minutes" id="minutes" placeholder="Минути" onChange={onInputChangeHandler} value={minutes} />
                 <input type="number" min="0" max="59" name="seconds" id="seconds" placeholder="Секунди" onChange={onInputChangeHandler} value={seconds} />
-                <button type="submit">Добави</button>
+                <button className=" input-btn" type="submit">Добави</button>
             </form>
         </section>
     )

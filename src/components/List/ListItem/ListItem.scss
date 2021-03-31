@@ -1,7 +1,6 @@
 .listItem-li-container{
     display: flex;
     justify-content: space-between;
-    list-style: disc;
 
     .piece-info {
         display: flex;
@@ -11,16 +10,18 @@
 
     .list-controls-btn-delete {
         margin: 16px;
-        background-color: red;
+        background-color: transparent;
         color: whitesmoke;
         overflow: hidden;
         border: 1px solid whitesmoke;
         border-radius: 12px;
         padding: 6px 14px;
+        font-weight: bold;
 
         &:hover {
-            font-weight: bold;
+          
             border: 2px solid whitesmoke;
+            background-color: red;
             cursor: pointer;
         }
     }

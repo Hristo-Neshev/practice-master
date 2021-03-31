@@ -1,0 +1,16 @@
+.no-repertoire-yet {
+    color: whitesmoke;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    border-bottom: 1px solid whitesmoke;
+    padding-bottom: 20px;
+
+    li{
+        text-align: center;
+        list-style: disc;
+        color: whitesmoke;
+    }
+}

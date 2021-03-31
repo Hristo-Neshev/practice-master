@@ -1,0 +1,27 @@
+.listItem-li-container{
+    display: flex;
+    justify-content: space-between;
+    list-style: disc;
+
+    .piece-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .list-controls-btn-delete {
+        margin: 16px;
+        background-color: red;
+        color: whitesmoke;
+        overflow: hidden;
+        border: 1px solid whitesmoke;
+        border-radius: 12px;
+        padding: 6px 14px;
+
+        &:hover {
+            font-weight: bold;
+            border: 2px solid whitesmoke;
+            cursor: pointer;
+        }
+    }
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Notification from '../../UI/Notification/Notification';
 import { getLocalUserData } from '../../../services/userServices';
-// import { addRepertoire } from '../../../services/repertoireServices';
+import { addRepertoire } from '../../../services/repertoireServices';
 import './AddRepertoireForm.scss';
 
 
@@ -18,13 +18,32 @@ const AddRepertoireForm = (props) => {
     const onAddRepertoireSubmitHandler = (event) => {
         event.preventDefault();
 
-        const pieceData = { title, composer, minutes, seconds, userId: userData.userId };
-    
+        let length = '';
+        if (seconds.toString().length === 1) {
+            length = `${minutes}:0${seconds}`
+        } else if (seconds.toString().length === 2) {
+            length = `${minutes} : ${seconds}`
+        }
 
+        const pieceData = { title, composer, length };
 
-
-
+        addRepertoire(pieceData)
+            .then(response => response.json())
+            .then(resData => {
+                setTitle('');
+                setComposer('');
+                setMinutes('минути');
+                setSeconds('секунди');
+                props.onRepertoireChange();
+            }).catch(error => {
+                console.log(error.message);
+            })
     }
+
+
+
+
+
 
     const onInputChangeHandler = (event) => {
         switch (event.target.name) {

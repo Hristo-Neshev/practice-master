@@ -1,19 +1,27 @@
 import './ListItem.scss';
+import { deleteRepertoire } from '../../../services/repertoireServices';
+
 
 const ListItem = (props) => {
 
-    const onDeleteHandler = (e) => {
-        // import repertoire service and get id from props
-        //import change state handler from parent component
+    const onDeleteHandler = () => {
+        deleteRepertoire(props.id)
+            .then(res => res.json)
+            .then(resData => {
+                console.log(resData);
+                props.refresh();
+            }).catch(error => console.log(error));
     }
 
     return (
         <li className="listItem-li-container">
-            <p> {props.title} - {props.composer} {props.minutes} минути : {props.seconds} секунди  </p>
-            <button className="list-controls-btn-delete" onclick={onDeleteHandler}>Изтрий</button>
+            <p>{props.title} - {props.composer} Дължина: {props.length} минути</p>
+            <button className="list-controls-btn-delete" onClick={onDeleteHandler}>Изтрий</button>
         </li>
     )
 }
 
 export default ListItem;
+
+
 

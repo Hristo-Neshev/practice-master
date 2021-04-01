@@ -25,7 +25,8 @@ function Login(props) {
         userServices.login(email, password)
             .then(response => response.json())
             .then(resData => {
-                console.log(resData);
+                console.log(resData.objectId);
+                console.log(resData["user-token"]);
 
                 if (resData.userStatus === 'ENABLED') {
                     userServices.setToLocalStorage(resData.objectId, resData["user-token"]);

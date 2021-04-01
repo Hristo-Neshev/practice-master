@@ -1,11 +1,13 @@
 .listItem-li-container{
     display: flex;
     justify-content: space-between;
+    flex-basis: 100%;
 
     .piece-info {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: center;
+        align-items: flex-start;
+        flex-basis: 100%;
     }
 
     .list-controls-btn-delete {

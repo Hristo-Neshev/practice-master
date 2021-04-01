@@ -1,7 +1,8 @@
-.no-repertoire-yet {
+.repertoire-list {
     color: whitesmoke;
     font-size: 23px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 5vh;
@@ -9,7 +10,27 @@
     padding-bottom: 20px;
 
     li{
-        text-align: center;
         color: whitesmoke;
+    }
+
+    .loader{
+      align-self: center;
+    }
+
+}
+.refresh-btn  {
+    margin: 16px;
+    background-color: transparent;
+    color: whitesmoke;
+    overflow: hidden;
+    border: 1px solid whitesmoke;
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-weight: bold;
+
+    &:hover {
+      
+        border: 2px solid whitesmoke;
+        cursor: pointer;
     }
 }

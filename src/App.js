@@ -13,7 +13,6 @@ function App() {
 
   useEffect(()=> {
     const user = userServices.getLocalUserData();
-    console.log('app useeffect + ', user );
     if(user.token !== null) {
       setLoggedIn(true);
     }

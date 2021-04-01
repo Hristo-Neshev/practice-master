@@ -36,21 +36,19 @@ function Register(props) {
         }
 
         userServices.register(email, password)
-        .then(response => response.json())
-        .then(resData => {
-           if(resData.email) {
-            userServices.setToLocalStorage(resData.email, resData.localId, resData.idToken, resData.expiresIn, resData.refreshToken);
-            setSuccessfulReg(true);
-            
-           } else {
-               console.log(resData);
-               setNotificationMessage('Възникна грешка!')
-           }
-        })
-        .catch(error => {
-            setNotificationMessage(error.message);
-            setSuccessfulReg(false);
-        })
+            .then(response => response.json())
+            .then(resData => {
+                if (resData.email) {
+                    setSuccessfulReg(true);
+                } else {
+                    setNotificationMessage(resData.message);
+                    setSuccessfulReg(false);
+                }
+            })
+            .catch(error => {
+                setNotificationMessage(error.message);
+                setSuccessfulReg(false);
+            })
     }
 
     if (successfulReg) {

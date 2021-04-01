@@ -25,24 +25,23 @@ function Login(props) {
         userServices.login(email, password)
             .then(response => response.json())
             .then(resData => {
-                // console.log(resData);
-               if(resData.email) {
-                userServices.setToLocalStorage(resData.email, resData.localId, resData.idToken, resData.expiresIn, resData.refreshToken);
-                setSuccessfulLogin(true);
-                props.changeLoginState(true);
-               
-               } else {
-                   setNotificationMessage('Възникна грешка!')
-               }
-              
+                console.log(resData);
+
+                if (resData.userStatus === 'ENABLED') {
+                    userServices.setToLocalStorage(resData.objectId, resData["user-token"]);
+                    setSuccessfulLogin(true);
+                    props.changeLoginState(true)
+                } else {
+                    setNotificationMessage(resData.message);
+                }
             })
             .catch(error => {
                 setNotificationMessage(error.message);
             })
     }
 
-    if(successfulLogin) {
-        return <Redirect to="/"/>
+    if (successfulLogin) {
+        return <Redirect to="/" />
     }
 
 
@@ -61,7 +60,7 @@ function Login(props) {
                 <div className="form-container">
                     <form onSubmit={onSubmitHandler} className="user-form-form">
                         <input type="email" placeholder="Email" id="email" name="email" value={email} onChange={onChangeEmailHandler} />
-                        <input type="password"  placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
+                        <input type="password" placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
                         <input className='input-btn' type="submit" value="Влез" />
                     </form>
                 </div>

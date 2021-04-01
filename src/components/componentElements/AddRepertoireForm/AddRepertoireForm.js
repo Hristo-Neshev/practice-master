@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Notification from '../../UI/Notification/Notification';
 import { getLocalUserData } from '../../../services/userServices';
+// import { addRepertoire } from '../../../services/repertoireServices';
 import './AddRepertoireForm.scss';
 
 
@@ -17,26 +18,10 @@ const AddRepertoireForm = (props) => {
     const onAddRepertoireSubmitHandler = (event) => {
         event.preventDefault();
 
-        if (title.length < 1) {
-            setNotificationMessage('Моля въведете заглавие!');
-            return;
-        }
-        if (minutes < 0 || minutes > 59) {
-            setNotificationMessage('Минутите трябва да са между 0 и 59!');
-            return;
-        }
-        if (seconds < 0 || seconds > 59) {
-            setNotificationMessage('Секундите трябва да са между 0 и 59!');
-            return;
-        }
+        const pieceData = { title, composer, minutes, seconds, userId: userData.userId };
+    
 
-        /// fetch и смяна на parent state
-        console.log('Data is valid!');
-        console.log(title);
-        console.log(composer);
-        console.log(minutes);
-        console.log(seconds);
-        console.log(userData.userId);
+
 
 
     }
@@ -49,8 +34,6 @@ const AddRepertoireForm = (props) => {
             case 'seconds': setSeconds(event.target.value); break;
         }
     }
-
-
 
     return (
         <section className="addRepertoireForm-container">
@@ -68,3 +51,4 @@ const AddRepertoireForm = (props) => {
 }
 
 export default AddRepertoireForm;
+

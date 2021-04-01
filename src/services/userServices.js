@@ -1,33 +1,31 @@
-import Login from "../containers/UserComponents/Login/Login";
 import { Redirect } from 'react-router-dom';
 
-const API_KEY = 'AIzaSyAES8-tPtyixO1XT4bn-XPUyVc311t_Ct4';
+const APPLICATION_ID = '355CA966-0895-BB11-FF97-4EF75F76C400';
+const REST_API_KEY = 'FD5261D4-E9E0-4F96-8BC2-ED5AC1B32176';
+
+const registerUrl = `https://api.backendless.com/${APPLICATION_ID}/${REST_API_KEY}/users/register`;
+const loginUrl = `https://api.backendless.com/${APPLICATION_ID}/${REST_API_KEY}/users/login`;
 
 export const register = (email, password) => {
-    return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, {
+    return fetch(registerUrl, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-            returnSecureToken: true
-        })
+        body: JSON.stringify({ "email": email, "password": password })
 
     });
 }
 
 export const login = (email, password) => {
-    return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
+    return fetch(loginUrl, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email: email,
-            password: password,
-            returnSecureToken: true
+            "login": email,
+            "password": password,
         })
 
     });
@@ -39,21 +37,15 @@ export const logout = () => {
 }
 
 
-export const setToLocalStorage = (userEmail, userId, token, expiresIn, refreshToken) => {
-    localStorage.setItem('userEmail', userEmail);
+export const setToLocalStorage = (userId, token) => {
     localStorage.setItem('userId', userId);
     localStorage.setItem('token', token);
-    localStorage.setItem('expiresIn', expiresIn);
-    localStorage.setItem('refreshToken', refreshToken);
 }
 
 export const getLocalUserData = () => {
-    const userEmail = localStorage.getItem('userEmail');
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
-    const expiresIn = localStorage.getItem('expiresIn');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    const userData = { userEmail, userId, token, expiresIn, refreshToken };
+    const userData = { userId, token };
+    
     return userData;
 }

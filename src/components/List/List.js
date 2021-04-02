@@ -1,5 +1,7 @@
-import ListItem from './ListItem/ListItem';
 import { useEffect, useState, Fragment } from 'react';
+
+import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
+import ListItem from './ListItem/ListItem';
 import * as repertoireServices from '../../services/repertoireServices';
 import './List.scss';
 
@@ -25,16 +27,14 @@ const List = (props) => {
         }
     }
 
-    let listItems = '';
+    let listItems = <LoadingSpinner className="spinner"/>;
     if (repertoire.length > 0) {
         listItems = repertoire.map(piece => {
             return (
                 <ListItem id={piece.objectId} title={piece.title} composer={piece.composer} length={piece.length} key={piece.objectId} refresh={onRefreshHandler} />
             )
         })
-    } else {
-        listItems = <p>Все още нямате произведения в репертоара си!</p>;
-    }
+    } 
 
     return (
         <Fragment>

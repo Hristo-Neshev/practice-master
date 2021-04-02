@@ -1,0 +1,54 @@
+.user-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto;
+    margin-bottom: 30px;
+    background-image: url('../../../assets/images/light-blue-background.jpg');
+    background-size: cover;
+    width: 100%;
+    min-height: 70vh;
+    border-radius: 12px;
+    color: whitesmoke;
+    text-shadow: 1px 0px #ffff;
+    text-align: center;
+
+   .user-heading {
+       h1{
+        font-size: 50px;
+        font-style: italic;
+        margin-bottom: 1px;
+        text-shadow: 1px 0px black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid white;
+        width: fit-content;
+       } 
+       p {
+        color: whitesmoke;
+        margin-top: 1px;
+        font-size: 18px;
+        text-shadow: 1px 0px black;
+       }
+    }
+
+    .start-now {
+        background-color: #3980A0;
+        margin-bottom: 150px;
+        padding: 20px 30px;
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-right: 20px;
+
+        &:hover {
+            border: 2px solid whitesmoke;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+    }
+
+}

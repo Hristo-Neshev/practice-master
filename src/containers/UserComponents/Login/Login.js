@@ -25,11 +25,11 @@ function Login(props) {
         userServices.login(email, password)
             .then(response => response.json())
             .then(resData => {
-                console.log(resData.objectId);
-                console.log(resData["user-token"]);
+                console.log(resData);
+               
 
                 if (resData.userStatus === 'ENABLED') {
-                    userServices.setToLocalStorage(resData.objectId, resData["user-token"]);
+                    userServices.setToLocalStorage(resData.objectId, resData["user-token"], resData.email);
                     setSuccessfulLogin(true);
                     props.changeLoginState(true)
                 } else {

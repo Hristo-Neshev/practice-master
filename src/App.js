@@ -9,30 +9,25 @@ import * as userServices from './services/userServices';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState(null);
 
 
   useEffect(()=> {
     const user = userServices.getLocalUserData();
+   
     if(user.token !== null) {
       setLoggedIn(true);
+      setUserEmail(user.userEmail)
     }
-  },[])
+  },[loggedIn, userEmail])
 
   const changeLoginState = (bool) => {
     setLoggedIn(bool);
   }
 
-
-
-
-
-
-
-
-
   return (
     <div className="App">
-      <Header loggedIn={loggedIn} changeAppState={changeLoginState} />
+      <Header loggedIn={loggedIn} userEmail={userEmail} changeAppState={changeLoginState} />
       <Main loggedIn={loggedIn} changeAppState={changeLoginState} />
       <Footer />
 
@@ -41,3 +36,11 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+

@@ -9,7 +9,7 @@ function Header(props) {
     return (
         <header className='header'>
             <Logo />
-            <Navigation loggedIn={props.loggedIn} changeAppState={props.changeAppState} />
+            <Navigation loggedIn={props.loggedIn} userEmail={props.userEmail} changeAppState={props.changeAppState} />
         </header>
     );
 }

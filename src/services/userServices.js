@@ -37,15 +37,17 @@ export const logout = () => {
 }
 
 
-export const setToLocalStorage = (userId, token) => {
+export const setToLocalStorage = (userId, token, userEmail) => {
     localStorage.setItem('userId', userId);
     localStorage.setItem('token', token);
+    localStorage.setItem('userEmail', userEmail);
 }
 
 export const getLocalUserData = () => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
-    const userData = { userId, token };
+    const userEmail = localStorage.getItem('userEmail');
+    const userData = { userId, token, userEmail };
     
     return userData;
 }

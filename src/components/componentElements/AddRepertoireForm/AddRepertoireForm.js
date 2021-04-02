@@ -34,7 +34,6 @@ const AddRepertoireForm = (props) => {
                 setComposer('');
                 setMinutes('минути');
                 setSeconds('секунди');
-                props.onRepertoireChange();
             }).catch(error => {
                 console.log(error.message);
             })

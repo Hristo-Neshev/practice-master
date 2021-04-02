@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 
 import Notification from '../../../components/UI/Notification/Notification';
+import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner';
 import * as userServices from '../../../services/userServices';
 
 function Login(props) {
@@ -10,6 +11,7 @@ function Login(props) {
     const [password, setPassword] = useState('');
     const [successfulLogin, setSuccessfulLogin] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState(null);
+    const [loading, setLoading] = useState(false);
 
 
     const onChangeEmailHandler = (e) => {
@@ -22,22 +24,27 @@ function Login(props) {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
+        setLoading(true);
+
         userServices.login(email, password)
             .then(response => response.json())
             .then(resData => {
                 console.log(resData);
-               
+
 
                 if (resData.userStatus === 'ENABLED') {
                     userServices.setToLocalStorage(resData.objectId, resData["user-token"], resData.email);
                     setSuccessfulLogin(true);
-                    props.changeLoginState(true)
+                    props.changeLoginState(true);
+                    setLoading(false);
                 } else {
                     setNotificationMessage(resData.message);
+                    setLoading(false);
                 }
             })
             .catch(error => {
                 setNotificationMessage(error.message);
+                setLoading(false);
             })
     }
 
@@ -45,13 +52,9 @@ function Login(props) {
         return <Redirect to="/" />
     }
 
-
-
-
-
-
     return (
         <article className="user-form-container">
+            {loading ? <LoadingSpinner/> : null}
             <h1>Вход</h1>
             <Notification notificationMessage={notificationMessage} />
             <section className="user-form">

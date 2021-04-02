@@ -8,7 +8,6 @@ const ListItem = (props) => {
         deleteRepertoire(props.id)
             .then(res => res.json)
             .then(resData => {
-                console.log(resData);
                 props.refresh();
             }).catch(error => console.log(error));
     }

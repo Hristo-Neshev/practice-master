@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Notification from '../../UI/Notification/Notification';
-import { getLocalUserData } from '../../../services/userServices';
 import { addRepertoire } from '../../../services/repertoireServices';
 import './AddRepertoireForm.scss';
-
 
 const AddRepertoireForm = (props) => {
     const [title, setTitle] = useState('');
@@ -13,7 +11,6 @@ const AddRepertoireForm = (props) => {
     const [seconds, setSeconds] = useState('секунди');
 
     const [notificationMessage, setNotificationMessage] = useState(null);
-    const userData = getLocalUserData();
 
     const onAddRepertoireSubmitHandler = (event) => {
         event.preventDefault();
@@ -29,20 +26,15 @@ const AddRepertoireForm = (props) => {
 
         addRepertoire(pieceData)
             .then(response => response.json())
-            .then(resData => {
+            .then(() => {
                 setTitle('');
                 setComposer('');
                 setMinutes('минути');
                 setSeconds('секунди');
             }).catch(error => {
-                console.log(error.message);
+                setNotificationMessage(error.message)
             })
     }
-
-
-
-
-
 
     const onInputChangeHandler = (event) => {
         switch (event.target.name) {
@@ -50,6 +42,7 @@ const AddRepertoireForm = (props) => {
             case 'composer': setComposer(event.target.value); break;
             case 'minutes': setMinutes(event.target.value); break;
             case 'seconds': setSeconds(event.target.value); break;
+            default: break;
         }
     }
 

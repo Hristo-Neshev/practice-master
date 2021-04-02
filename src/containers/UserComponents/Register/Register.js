@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as userServices from '../../../services/userServices';
 
 import './Register.scss';
@@ -13,7 +13,6 @@ function Register(props) {
     const [notificationMessage, setNotificationMessage] = useState(null);
     const [successfulReg, setSuccessfulReg] = useState(false);
 
-
     const onChangeEmailHandler = (e) => {
         setEmail(e.target.value);
     }
@@ -26,10 +25,7 @@ function Register(props) {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        // if (password.length < 6) {
-        //     setNotificationMessage('Паролата трябва да е с дължина поне 6 символа!');
-        //     return;
-        // }
+
         if (password !== rePassword) {
             setNotificationMessage('Паролите трябва да  съвпадат!');
             return;
@@ -54,8 +50,6 @@ function Register(props) {
     if (successfulReg) {
         return <Redirect to="/login" />
     }
-
-
 
     return (
         <article className="user-form-container">

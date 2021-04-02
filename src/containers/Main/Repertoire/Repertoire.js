@@ -1,14 +1,9 @@
-import { useState } from 'react';
-
 import './Repertoire.scss';
 import Notification from '../../../components/UI/Notification/Notification'
 import List from '../../../components/List/List';
 import AddRepertoireForm from '../../../components/componentElements/AddRepertoireForm/AddRepertoireForm';
 
-
 const Repertoire = (props) => {
-
-
     return (
         <section className="repertoire-container">
             <h1>Репертоар</h1>

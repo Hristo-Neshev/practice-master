@@ -21,7 +21,6 @@ function Login(props) {
         setPassword(e.target.value);
     }
 
-
     const onSubmitHandler = (event) => {
         event.preventDefault();
         setLoading(true);
@@ -29,22 +28,16 @@ function Login(props) {
         userServices.login(email, password)
             .then(response => response.json())
             .then(resData => {
-                console.log(resData);
-
-
                 if (resData.userStatus === 'ENABLED') {
                     userServices.setToLocalStorage(resData.objectId, resData["user-token"], resData.email);
                     setSuccessfulLogin(true);
                     props.changeLoginState(true);
-                    setLoading(false);
                 } else {
                     setNotificationMessage(resData.message);
-                    setLoading(false);
                 }
             })
             .catch(error => {
                 setNotificationMessage(error.message);
-                setLoading(false);
             })
     }
 
@@ -54,7 +47,7 @@ function Login(props) {
 
     return (
         <article className="user-form-container">
-            {loading ? <LoadingSpinner/> : null}
+            {loading ? <LoadingSpinner /> : null}
             <h1>Вход</h1>
             <Notification notificationMessage={notificationMessage} />
             <section className="user-form">

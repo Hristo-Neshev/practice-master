@@ -20,7 +20,7 @@ export const addRepertoire = (pieceData) => {
 
 export const getRepertoire = () => {
     const userData = getLocalUserData();
-    return fetch(`${repertoireBaseUrl}?where=ownerId='${userData.userId}'`,{
+    return fetch(`${repertoireBaseUrl}?where=ownerId='${userData.userId}'&pageSize=100`,{
         headers: {
             "Content-Type": "application/json",
             "user-token": userData.token

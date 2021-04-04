@@ -7,15 +7,15 @@ const CreateConcert = (props) => {
     const [repertoire, setRepertoire] = useState([]);
     const [concertProgram, setConcertProgram] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         getRepertoire()
-        .then(response => response.json())
-        .then(resData => {
-            setRepertoire(resData);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(response => response.json())
+            .then(resData => {
+                setRepertoire(resData);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }, []);
 
 
@@ -23,12 +23,14 @@ const CreateConcert = (props) => {
         event.preventDefault();
         const currentPieceId = event.target["piece-select"].value;
         const currentPiece = repertoire.find(piece => piece.objectId === currentPieceId);
-      
+
         setConcertProgram((oldState) => oldState.concat([currentPiece]));
     }
 
-    const onRemoveHandler = (pieceId) => {
-        console.log(pieceId);
+    const onRemoveHandler = (e) => {
+        const currentItemId = e.target.id;
+        const updatedProgram = concertProgram.filter(piece => piece.objectId !== currentItemId);
+        setConcertProgram(updatedProgram);
     }
 
     const options = repertoire.map(piece => {
@@ -39,23 +41,23 @@ const CreateConcert = (props) => {
 
     let listItems = <li>Добавете произведения в програмата</li>;
 
-    if(concertProgram.length > 0) {
+    if (concertProgram.length > 0) {
         listItems = concertProgram.map(piece => {
             return (
                 <li key={piece.objectId}>
                     <p>{piece.title} - {piece.composer}</p>
-                    <button  onClick={onRemoveHandler(piece.objectId)} >Премахни</button>
+                    <button id={piece.objectId} onClick={onRemoveHandler} >Премахни</button>
                 </li>
             )
         })
     }
-    console.log(listItems);
+
     return (
         <section className="create-concert-container">
-            <form  className="create-concert-form" onSubmit={formSubmitHandler}>
+            <form className="create-concert-form" onSubmit={formSubmitHandler}>
                 <label htmlFor="piece-select">Добави произведение</label>
                 <select name="piece-select" id="piece-select">
-                   {options}
+                    {options}
                 </select>
                 <button type="submit">Добави произведение</button>
             </form>

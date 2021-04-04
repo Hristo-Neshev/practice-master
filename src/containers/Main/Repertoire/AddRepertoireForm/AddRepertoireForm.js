@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Notification from '../../UI/Notification/Notification';
-import { addRepertoire } from '../../../services/repertoireServices';
+import Notification from '../../../../components/UI/Notification/Notification';
+import { addRepertoire } from '../../../../services/repertoireServices';
 import './AddRepertoireForm.scss';
 
 const AddRepertoireForm = (props) => {

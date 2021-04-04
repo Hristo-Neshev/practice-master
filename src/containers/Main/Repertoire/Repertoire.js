@@ -1,7 +1,7 @@
 import './Repertoire.scss';
 import Notification from '../../../components/UI/Notification/Notification'
 import List from '../../../components/List/List';
-import AddRepertoireForm from '../../../components/componentElements/AddRepertoireForm/AddRepertoireForm';
+import AddRepertoireForm from './AddRepertoireForm/AddRepertoireForm';
 
 const Repertoire = (props) => {
     return (

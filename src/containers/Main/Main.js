@@ -6,8 +6,9 @@ import Home from '../../components/Home/Home';
 import Login from '../UserComponents/Login/Login';
 import NotFound from '../../components/NotFound/NotFound';
 import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner';
-const Register = lazy(()=> import('../UserComponents/Register/Register') );
-const Repertoire = lazy(()=> import('./Repertoire/Repertoire'));
+const Register = lazy(() => import('../UserComponents/Register/Register'));
+const Repertoire = lazy(() => import('./Repertoire/Repertoire'));
+const CreateConcert = lazy(() => import('./CreateConcert/CreateConcert'));
 
 function Main(props) {
    const loggedIn = props.loggedIn;
@@ -18,13 +19,16 @@ function Main(props) {
          <Switch>
             <Route path='/' exact><Home loggedIn={loggedIn} /></Route>
             <Route path='/register' render={() => (
-               loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner/>}><Register/></Suspense>)
+               loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><Register /></Suspense>)
             )} />
             <Route path='/login' render={() => (
-               loggedIn ? <Redirect to='/' /> : (<Login  changeLoginState={props.changeAppState}/>)
+               loggedIn ? <Redirect to='/' /> : (<Login changeLoginState={props.changeAppState} />)
             )} />
-               <Route path='/repertoire' render={() => (
-               !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner/>}><Repertoire/></Suspense>)
+            <Route path='/repertoire' render={() => (
+               !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><Repertoire /></Suspense>)
+            )} />
+               <Route path='/createConcert' render={() => (
+               !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><CreateConcert /></Suspense>)
             )} />
             <Route component={NotFound}></Route>
          </Switch>

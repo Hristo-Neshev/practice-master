@@ -8,7 +8,8 @@ import NotFound from '../../components/NotFound/NotFound';
 import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner';
 const Register = lazy(() => import('../UserComponents/Register/Register'));
 const Repertoire = lazy(() => import('./Repertoire/Repertoire'));
-const CreateConcert = lazy(() => import('./CreateConcert/CreateConcert'));
+const Concerts = lazy(() => import('./Concerts/Concerts'))
+const CreateConcert = lazy(() => import('./Concerts/CreateConcert/CreateConcert'));
 
 function Main(props) {
    const loggedIn = props.loggedIn;
@@ -27,7 +28,10 @@ function Main(props) {
             <Route path='/repertoire' render={() => (
                !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><Repertoire /></Suspense>)
             )} />
-               <Route path='/createConcert' render={() => (
+            <Route path='/concerts' render={() => (
+               !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><Concerts /></Suspense>)
+            )} />
+            <Route path='/createConcert' render={() => (
                !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><CreateConcert /></Suspense>)
             )} />
             <Route component={NotFound}></Route>

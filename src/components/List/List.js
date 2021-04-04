@@ -1,19 +1,26 @@
 import { useEffect, useState, Fragment } from 'react';
 
 import ListItem from './ListItem/ListItem';
+import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
 import * as repertoireServices from '../../services/repertoireServices';
 import './List.scss';
 
 const List = (props) => {
     const [refresh, setRefresh] = useState(false);
-    const [repertoire, setRepertoire] = useState([])
+    const [repertoire, setRepertoire] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         repertoireServices.getRepertoire()
             .then(response => response.json())
             .then(resData => {
                 setRepertoire(resData);
-            }).catch(err => console.log(err.message))
+                setLoading(false);
+            }).catch(err => {
+                console.log(err.message)
+                setLoading(false);
+            })
     }, [refresh])
 
     const onRefreshHandler = (e) => {
@@ -35,6 +42,7 @@ const List = (props) => {
 
     return (
         <Fragment>
+            {loading ? <LoadingSpinner/> : null}
             <ul className="repertoire-list">
                 {listItems}
             </ul>

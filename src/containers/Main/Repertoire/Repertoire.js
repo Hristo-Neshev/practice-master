@@ -9,7 +9,7 @@ const Repertoire = (props) => {
             <h1>Репертоар</h1>
             <Notification notificationMessage={false} />
             <section className="repertoire-sections-container">
-                <AddRepertoireForm />
+                <AddRepertoireForm className="add-form" />
                 <section className="repertoire-list-container">
                     <h2>Текущ репертоар</h2>
                     <List />

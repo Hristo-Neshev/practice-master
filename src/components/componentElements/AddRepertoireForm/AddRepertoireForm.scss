@@ -3,11 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: flex-start;
     justify-content: center;
     flex-basis: 35%;
     flex-grow: 1;
-    // border: 1px solid whitesmoke;
-    // border-radius: 12px;
     max-width: 30vw;
     margin:10px;
 

@@ -1,0 +1,79 @@
+.concerts-container {
+    background-image: url('../../../assets/images/header-footer-background.jpg');
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+
+
+    h1{
+        color: whitesmoke;
+        border-bottom: 1px solid whitesmoke;
+        font-style: italic;
+        font-size: 30px;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .LoadingSpinner_lds-hourglass__3NTqw {
+        position: relative;
+        left: 150px;
+    }
+
+
+    .concert-list {
+        flex-basis: 100%;
+        justify-content: space-between;
+
+        .concert-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+         
+        }
+    }
+    .concert-listItem{
+        margin: 20px;
+        color: whitesmoke;
+        font-size: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-basis: 100%;
+    }
+
+
+}
+
+.future-concerts {
+    width: 100%;
+}
+
+.concert-delete-btn{
+    background-color: transparent;
+    color: whitesmoke;
+    overflow: hidden;
+    border: 1px solid whitesmoke;
+    border-radius: 12px;
+    margin-left: 10px;
+    font-size: 20px;
+
+    &:hover {
+        font-weight: bold;
+        background-color: red;
+    }
+
+}
+
+.details-link {
+    font-size: 20px;
+
+    &:hover {
+        border-bottom: 1px solid whitesmoke;
+    }
+
+}

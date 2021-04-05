@@ -14,7 +14,7 @@ const ListItem = (props) => {
 
     return (
         <li className="listItem-li-container">
-            <p>{props.title} - {props.composer}  <i class="far fa-clock fa-sm"></i> {props.length} минути</p>
+            <p>{props.title} - {props.composer}  <i className="far fa-clock fa-sm"></i> {props.length} минути</p>
             <button className="list-controls-btn-delete" onClick={onDeleteHandler}>Изтрий</button>
         </li>
     )

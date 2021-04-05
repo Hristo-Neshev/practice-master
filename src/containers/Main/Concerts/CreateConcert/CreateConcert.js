@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import './CreateConcert.scss';
 import { getRepertoire } from '../../../../services/repertoireServices';
-import { addConcert } from '../../../../services/concertServises';
+import { addConcert } from '../../../../services/concertServices';
 import Notification from '../../../../components/UI/Notification/Notification';
 
 const CreateConcert = (props) => {
@@ -13,8 +13,6 @@ const CreateConcert = (props) => {
     const [date, setDate] = useState(null);
     const [time, setTime] = useState(null);
     const [notificationMessage, setNotificationMessage] = useState(null);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
     const history = useHistory();
 
 
@@ -71,7 +69,6 @@ const CreateConcert = (props) => {
         addConcert(concert)
         .then(response => response.json())
         .then(resData => {
-            console.log(resData);
             history.push('/concerts')
         }).catch(error => {
             console.log(error);

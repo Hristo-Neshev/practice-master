@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import './CreateConcert.scss';
 import { getRepertoire } from '../../../../services/repertoireServices';
+import { addConcert } from '../../../../services/concertServises';
 import Notification from '../../../../components/UI/Notification/Notification';
 
 const CreateConcert = (props) => {
@@ -56,7 +57,7 @@ const CreateConcert = (props) => {
     }
 
     const onCreateConcertHandler = (e) => {
-        const concert = { place, date, time, concertProgram };
+        const concert = { place: place, concertDate: date, concertTime: time, concertProgram: concertProgram };
 
         if (!place || !date || !time) {
             setNotificationMessage('Попълнете всички полета!');
@@ -67,8 +68,15 @@ const CreateConcert = (props) => {
             return;
         }
 
-        console.log(concert);
-        // history.push('/concerts')
+        addConcert(concert)
+        .then(response => response.json())
+        .then(resData => {
+            console.log(resData);
+            history.push('/concerts')
+        }).catch(error => {
+            console.log(error);
+            setNotificationMessage(error.message)
+        })
 
     }
 

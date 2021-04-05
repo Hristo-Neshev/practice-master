@@ -81,4 +81,9 @@
 .add-concert-link {
    position: relative;
    bottom: 20px;
+
+   &:hover {
+       font-weight: bold;
+       border-bottom: 1px solid whitesmoke;
+   }
 }

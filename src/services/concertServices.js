@@ -26,6 +26,16 @@ export const getAllConcerts = () => {
     });
 };
 
+export const getConcertById = (concertId) => {
+    const userData = getLocalUserData();
+    return fetch(`${concertsBaseUrl}/${concertId}`,{
+        headers: {
+            "Content-Type": "application/json",
+            "user-token": userData.token
+        }
+    });
+}
+
 export const deleteConcert = (id) => {
     const userData = getLocalUserData();
      return fetch(`${concertsBaseUrl}/${id}`,{
@@ -33,5 +43,5 @@ export const deleteConcert = (id) => {
          headers: {
             "user-token": userData.token
         }
-     })
-}
+     });
+};

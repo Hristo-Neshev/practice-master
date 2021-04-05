@@ -1,5 +1,9 @@
 .message {
-    color: red;
+    background-color: red;
+    color: whitesmoke;
     font-weight: bold;
     font-size: 20px;
+    border: 1px solid whitesmoke;
+    border-radius: 12px;
+    padding: 4px 12px ;
 }

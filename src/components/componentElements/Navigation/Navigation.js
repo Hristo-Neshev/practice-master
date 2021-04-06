@@ -1,10 +1,12 @@
-import './Navigation.scss';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { LoggedInContext} from '../../../context/userContext';
 import * as userServices from '../../../services/userServices';
+import './Navigation.scss';
 
 function Navigation(props) {
-    const loggedIn = props.loggedIn;
+    const loggedIn = useContext(LoggedInContext);
 
     const guestNav = (
         <ul className='header-nav-ul'>

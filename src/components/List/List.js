@@ -5,10 +5,10 @@ import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
 import * as repertoireServices from '../../services/repertoireServices';
 import './List.scss';
 
-const List = (props) => {
-    const [refresh, setRefresh] = useState(false);
+const List = ({refreshList}) => {
     const [repertoire, setRepertoire] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -21,7 +21,7 @@ const List = (props) => {
                 console.log(err.message)
                 setLoading(false);
             })
-    }, [refresh])
+    }, [ refreshList, refresh])
 
     const onRefreshHandler = (e) => {
         if (refresh) {
@@ -46,7 +46,6 @@ const List = (props) => {
             <ul className="repertoire-list">
                 {listItems}
             </ul>
-            <button className="refresh-btn" onClick={onRefreshHandler} >Презареди</button>
         </Fragment>
     );
 }

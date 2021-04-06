@@ -81,9 +81,8 @@ const CreateConcert = (props) => {
                 console.log(error);
                 setNotificationMessage(error.message)
             });
-        }
-
-        addConcert(concert)
+        } else {
+            addConcert(concert)
             .then(response => response.json())
             .then(resData => {
                 history.push('/concerts')
@@ -91,6 +90,9 @@ const CreateConcert = (props) => {
                 console.log(error);
                 setNotificationMessage(error.message)
             });
+        }
+
+      
 
     }
 
@@ -136,7 +138,6 @@ const CreateConcert = (props) => {
                         <input type="date" name="date" id="date" value={date} onChange={onDetailsChangeInputHandler} />
                         <label htmlFor="time">Начален час</label>
                         <input type="time" name="time" id="time" value={time} onChange={onDetailsChangeInputHandler} />
-                        {/* <button className="add-piece-btn" type="submit">Добави информация</button> */}
                     </form>
                 </section>
                 <section className="add-concert-program">

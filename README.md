@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# About Practice Master
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Practice Mater is organizer for musicians - professional and amateur. 
 
-## Available Scripts
+This project have Home Guest, Register and Login  pages open to anyone.
+In registration form all fields are required. If some field is empty or the data is not valid notification message is shown.
+Registered users have different home page with different "Call to action" button and different navigation bar. 
 
-In the project directory, you can run:
+## Repertoire page
 
-### `npm start`
+Repertoire page is the place where users can add or remove pieces to their repertoire. On the left side is Add repertoire form, and on the right side is list with current repertoire.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Concert page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+On this page users can see list of their planned concerts or add new one. From there they can view details about concert or delete it. 
 
-### `npm test`
+## Concert details page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here users can see all info about given concert. Also they can edit information about the concert.
 
-### `npm run build`
+## Development server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Project Architecture
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For this project i use Backedless for the Back-end.
+The components are separated in two : containers and components.
 
-### `npm run eject`
+## Containers
+The most of components here is state-full.
+The major containers are : Header, Main, and Footer.
+The most important is the Main. There is the Routing and Concerts and Repertoire components.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Components
+The most of components here is state-less.
+Here are components like Home, Not Found, or components used in other components like Notifications or Navigation etc.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Other
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Only LoadingSpinner use css module, other components use SASS.
+Context API is used for passing data about is user is logged in or not.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Future of the project
 
-## Learn More
+For the project i plan to add new major section about daily practice new pieces. There users can write notes, check how long they practice given piece, and total practice time(daily and weekly)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

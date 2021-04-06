@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+import { LoggedInContext } from './context/userContext';
 import Header from './containers/Header/Header';
 import Main from './containers/Main/Main';
 import Footer from './containers/Footer/Footer';
@@ -12,14 +13,14 @@ function App() {
   const [userEmail, setUserEmail] = useState(null);
 
 
-  useEffect(()=> {
+  useEffect(() => {
     const user = userServices.getLocalUserData();
-   
-    if(user.token !== null) {
+
+    if (user.token !== null) {
       setLoggedIn(true);
       setUserEmail(user.userEmail)
     }
-  },[loggedIn, userEmail])
+  }, [loggedIn, userEmail])
 
   const changeLoginState = (bool) => {
     setLoggedIn(bool);
@@ -27,8 +28,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header loggedIn={loggedIn} userEmail={userEmail} changeAppState={changeLoginState} />
-      <Main loggedIn={loggedIn} changeAppState={changeLoginState} />
+      <LoggedInContext.Provider value={loggedIn}>
+        <Header userEmail={userEmail} changeAppState={changeLoginState} />
+        <Main changeAppState={changeLoginState} />
+      </LoggedInContext.Provider>
       <Footer />
 
     </div>

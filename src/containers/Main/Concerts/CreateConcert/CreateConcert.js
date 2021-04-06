@@ -21,7 +21,6 @@ const CreateConcert = (props) => {
 
 
     useEffect(() => {
-        console.log('render');
         if (concertToUpdate !== undefined) {
             if (firstLoad) {
                 setFirstLoad(true);
@@ -41,7 +40,7 @@ const CreateConcert = (props) => {
             .catch(error => {
                 console.log(error);
             })
-    }, [props.oldConcertData]);
+    }, [props.oldConcertData, firstLoad, concertToUpdate]);
 
     const addPieceSubmitHandler = (event) => {
         event.preventDefault();
@@ -163,7 +162,7 @@ const CreateConcert = (props) => {
             </section>
             <section className="save-btn-container">
                 <Notification notificationMessage={notificationMessage} />
-                {!editMode ? <button className="create-concert-btn" onClick={onCreateConcertHandler}>Създай концерт</button> : <button className="create-concert-btn" onClick={onCreateConcertHandler}>Промени концерт</button>}
+                {!editMode ? <button className="create-concert-btn" onClick={onCreateConcertHandler}>Създай концерт</button> : <button className="create-concert-btn" onClick={onCreateConcertHandler}>Редактирай концерт</button>}
             </section>
         </section>
 

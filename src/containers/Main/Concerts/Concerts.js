@@ -25,13 +25,13 @@ const Concerts = (props) => {
         const concertId = e.target.id;
         setLoading(true);
         deleteConcert(concertId)
-        .then(response => response.json())
-        .then(resData => {
-            setLoading(false);
-            setConcerts(oldState => oldState.filter(concert => concert.objectId !== concertId));
-        }).catch(error => {
-            console.log(error);
-        })
+            .then(response => response.json())
+            .then(resData => {
+                setLoading(false);
+                setConcerts(oldState => oldState.filter(concert => concert.objectId !== concertId));
+            }).catch(error => {
+                console.log(error);
+            })
     }
 
     let listItems = <li className="concert-listItem">Все още нямате планирани концерти!</li>;
@@ -41,10 +41,10 @@ const Concerts = (props) => {
             return (
                 <li className="concert-listItem" key={concert.objectId}>
                     <p> {concert.place} - {concert.concertDate}</p>
-                   <section className="concert-controls">
-                   <Link to={`/concert/${concert.objectId}`} className="details-link">Детайли</Link>
-                    <button className="concert-delete-btn" id={concert.objectId} onClick={onDeleteHandler}>Изтрий</button>
-                   </section>
+                    <section className="concert-controls">
+                        <Link to={`/concert/${concert.objectId}`} className="details-link">Детайли</Link>
+                        <button className="concert-delete-btn" id={concert.objectId} onClick={onDeleteHandler}>Изтрий</button>
+                    </section>
                 </li>
             )
         })
@@ -52,9 +52,9 @@ const Concerts = (props) => {
 
     return (
         <section className="concerts-container">
-                {loading ? <LoadingSpinner /> : null}
             <section className="future-concerts">
                 <h1>Предстоящи концерти</h1>
+                {loading ? <LoadingSpinner /> : null}
                 <ul className="concerts-list">
                     {listItems}
                 </ul>

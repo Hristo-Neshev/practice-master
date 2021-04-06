@@ -11,6 +11,7 @@ const Repertoire = lazy(() => import('./Repertoire/Repertoire'));
 const Concerts = lazy(() => import('./Concerts/Concerts'))
 const CreateConcert = lazy(() => import('./Concerts/CreateConcert/CreateConcert'));
 const DetailConcert = lazy(() => import('./Concerts/DetailConcert/DetailConcert'));
+const EditConcert = lazy(()=> import('./Concerts/EditConcert/EditConcert'));
 
 function Main(props) {
    const loggedIn = props.loggedIn;
@@ -37,6 +38,9 @@ function Main(props) {
             )} />
             <Route path='/concert/:id' render={() => (
                !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><DetailConcert /></Suspense>)
+            )} />
+              <Route path='/editConcert/:id' render={() => (
+               !loggedIn ? <Redirect to='/' /> : (<Suspense fallback={<LoadingSpinner />}><EditConcert /></Suspense>)
             )} />
             <Route component={NotFound}></Route>
          </Switch>

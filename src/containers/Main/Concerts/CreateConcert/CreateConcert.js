@@ -3,20 +3,36 @@ import { useHistory } from 'react-router-dom';
 
 import './CreateConcert.scss';
 import { getRepertoire } from '../../../../services/repertoireServices';
-import { addConcert } from '../../../../services/concertServices';
+import { addConcert, updateConcert } from '../../../../services/concertServices';
 import Notification from '../../../../components/UI/Notification/Notification';
 
 const CreateConcert = (props) => {
+
+    const concertToUpdate = props.oldConcertData;
     const [repertoire, setRepertoire] = useState([]);
     const [concertProgram, setConcertProgram] = useState([]);
-    const [place, setPlace] = useState(null);
-    const [date, setDate] = useState(null);
-    const [time, setTime] = useState(null);
+    const [place, setPlace] = useState('');
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
     const [notificationMessage, setNotificationMessage] = useState(null);
+    const [editMode, setEditMode] = useState(false);
+    const [firstLoad, setFirstLoad] = useState(true)
     const history = useHistory();
 
 
     useEffect(() => {
+        console.log('render');
+        if (concertToUpdate !== undefined) {
+            if (firstLoad) {
+                setFirstLoad(true);
+                setEditMode(true);
+                setPlace(concertToUpdate.place);
+                setTime(concertToUpdate.concertTime);
+                setDate(concertToUpdate.concertDate);
+                setConcertProgram(concertToUpdate.concertProgram);
+            }
+        }
+
         getRepertoire()
             .then(response => response.json())
             .then(resData => {
@@ -25,7 +41,7 @@ const CreateConcert = (props) => {
             .catch(error => {
                 console.log(error);
             })
-    }, []);
+    }, [props.oldConcertData]);
 
     const addPieceSubmitHandler = (event) => {
         event.preventDefault();
@@ -37,16 +53,6 @@ const CreateConcert = (props) => {
         }
     }
 
-    const onDetailsSubmitHandler = (e) => {
-        e.preventDefault();
-        const place = e.target.place.value;
-        const date = e.target.date.value;
-        const time = e.target.time.value;
-
-        setPlace(place);
-        setDate(date);
-        setTime(time);
-    }
 
     const onRemoveHandler = (e) => {
         const currentItemId = e.target.id;
@@ -66,14 +72,25 @@ const CreateConcert = (props) => {
             return;
         }
 
+        if(editMode) {
+            updateConcert(concertToUpdate.objectId ,concert)
+            .then(response => response.json())
+            .then(resData => {
+                history.push('/concerts')
+            }).catch(error => {
+                console.log(error);
+                setNotificationMessage(error.message)
+            });
+        }
+
         addConcert(concert)
-        .then(response => response.json())
-        .then(resData => {
-            history.push('/concerts')
-        }).catch(error => {
-            console.log(error);
-            setNotificationMessage(error.message)
-        })
+            .then(response => response.json())
+            .then(resData => {
+                history.push('/concerts')
+            }).catch(error => {
+                console.log(error);
+                setNotificationMessage(error.message)
+            });
 
     }
 
@@ -82,31 +99,44 @@ const CreateConcert = (props) => {
             <option className="option" name="piece" id="piece" key={piece.objectId} value={piece.objectId}>{piece.title} - {piece.composer}</option>
         );
     });
-    let listItems = <li>Добавете произведения в програмата</li>;
 
-    if (concertProgram.length > 0) {
-        listItems = concertProgram.map(piece => {
-            return (
-                <li key={piece.objectId} className="concert-program-listItem">
-                    <p>{piece.title} - {piece.composer}</p>
-                    <button id={piece.objectId} onClick={onRemoveHandler} className="list-btn" >Премахни</button>
-                </li>
-            )
-        })
+    let listItems = <li>Добавете произведения в програмата</li>;
+    if (concertProgram) {
+        if (concertProgram.length > 0) {
+            listItems = concertProgram.map(piece => {
+                return (
+                    <li key={piece.objectId} className="concert-program-listItem">
+                        <p>{piece.title} - {piece.composer}</p>
+                        <button id={piece.objectId} onClick={onRemoveHandler} className="list-btn" >Премахни</button>
+                    </li>
+                )
+            })
+        }
+    }
+
+    const onDetailsChangeInputHandler = (e) => {
+        const currentInput = e.target.name;
+        switch (currentInput) {
+            case 'place': setPlace(e.target.value); break;
+            case 'date': setDate(e.target.value); break;
+            case 'time': setTime(e.target.value); break;
+
+        }
     }
 
     return (
         <section className="create-concert-container">
+            {editMode ? <h1 className="create-edit-heading">Промени концерт</h1> : <h1 className="create-edit-heading">Създай концерт</h1>  }
             <section className="add-concert-data-container">
                 <section className="concert-details">
-                    <form className="concert-details-form" onSubmit={onDetailsSubmitHandler}>
+                    <form className="concert-details-form" >
                         <label htmlFor="place">Място</label>
-                        <input type="text" name="place" id="place" />
+                        <input type="text" name="place" id="place" value={place} onChange={onDetailsChangeInputHandler} />
                         <label htmlFor="date">Дата</label>
-                        <input type="date" name="date" id="date" />
+                        <input type="date" name="date" id="date" value={date} onChange={onDetailsChangeInputHandler} />
                         <label htmlFor="time">Начален час</label>
-                        <input type="time" name="time" id="time" />
-                        <button className="add-piece-btn" type="submit">Добави информация</button>
+                        <input type="time" name="time" id="time" value={time} onChange={onDetailsChangeInputHandler} />
+                        {/* <button className="add-piece-btn" type="submit">Добави информация</button> */}
                     </form>
                 </section>
                 <section className="add-concert-program">
@@ -132,7 +162,7 @@ const CreateConcert = (props) => {
             </section>
             <section className="save-btn-container">
                 <Notification notificationMessage={notificationMessage} />
-                <button className="create-concert-btn" onClick={onCreateConcertHandler}>Създай концерт</button>
+                {!editMode ? <button className="create-concert-btn" onClick={onCreateConcertHandler}>Създай концерт</button> : <button className="create-concert-btn" onClick={onCreateConcertHandler}>Промени концерт</button>}
             </section>
         </section>
 

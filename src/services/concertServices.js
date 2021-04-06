@@ -36,6 +36,18 @@ export const getConcertById = (concertId) => {
     });
 }
 
+export const updateConcert = (concertId, concertData) => {
+    const userData = getLocalUserData();
+    return fetch(`${concertsBaseUrl}/${concertId}`,{
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+            "user-token": userData.token
+        },
+        body: JSON.stringify(concertData)
+    });
+}
+
 export const deleteConcert = (id) => {
     const userData = getLocalUserData();
      return fetch(`${concertsBaseUrl}/${id}`,{

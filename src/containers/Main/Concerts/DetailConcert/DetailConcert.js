@@ -57,7 +57,7 @@ if(concert.concertProgram) {
             </section>
             <section className="link-to-edit-container">
 
-        <Link to={`/editConcert/:${concert.objectId}`} className="link-to-edit">Редактирай концерта</Link>
+        <Link to={`/editConcert/${concert.objectId}`} className="link-to-edit">Редактирай концерта</Link>
             </section>
         </section>
     )

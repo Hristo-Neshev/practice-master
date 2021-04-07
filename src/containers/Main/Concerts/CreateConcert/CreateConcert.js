@@ -5,6 +5,7 @@ import './CreateConcert.scss';
 import { getRepertoire } from '../../../../services/repertoireServices';
 import { addConcert, updateConcert } from '../../../../services/concertServices';
 import Notification from '../../../../components/UI/Notification/Notification';
+import timeCalculator from '../../../../utils/timeCalculator';
 
 const CreateConcert = (props) => {
 
@@ -97,12 +98,14 @@ const CreateConcert = (props) => {
 
     const options = repertoire.map(piece => {
         return (
-            <option className="option" name="piece" id="piece" key={piece.objectId} value={piece.objectId}>{piece.title} - {piece.composer}</option>
+            <option className="option" name="piece" id="piece" key={piece.objectId} value={piece.objectId}>{piece.title} - {piece.composer}: {piece.length}</option>
         );
     });
 
     let listItems = <li>Добавете произведения в програмата</li>;
+    let totalLength = '';
     if (concertProgram) {
+         totalLength = timeCalculator(concertProgram);
         if (concertProgram.length > 0) {
             listItems = concertProgram.map(piece => {
                 return (
@@ -157,6 +160,7 @@ const CreateConcert = (props) => {
                         <ul>
                             {listItems}
                         </ul>
+                        <h2>Продължителност: {totalLength} минути</h2>
                     </section>
                 </section>
             </section>

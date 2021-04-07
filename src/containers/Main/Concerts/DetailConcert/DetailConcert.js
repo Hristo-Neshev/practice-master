@@ -4,6 +4,7 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import LoadingSpinner from '../../../../components/UI/LoadingSpinner/LoadingSpinner';
 import Notification from '../../../../components/UI/Notification/Notification';
 import { getConcertById } from '../../../../services/concertServices';
+import timeCalculator from '../../../../utils/timeCalculator';
 import './DetailConcert.scss';
 
 const DetailConcert = (props) => {
@@ -26,8 +27,9 @@ const DetailConcert = (props) => {
     }, [routeMatch.params.id]);
 
  let list = null;
- 
+ let totalLength = '';
 if(concert.concertProgram) {
+    totalLength = timeCalculator(concert.concertProgram);
     list = concert.concertProgram.map(piece => {
         return (
             <li key={piece.objectId}>{piece.title} - {piece.composer}</li>
@@ -53,6 +55,7 @@ if(concert.concertProgram) {
                     <ol>
                         {list}
                     </ol>
+                    <h2>Продължителност: {totalLength} минути</h2>
                 </section>
             </section>
             <section className="link-to-edit-container">

@@ -30,7 +30,7 @@ const DetailConcert = (props) => {
 if(concert.concertProgram) {
     list = concert.concertProgram.map(piece => {
         return (
-            <li>{piece.title} - {piece.composer}</li>
+            <li key={piece.objectId}>{piece.title} - {piece.composer}</li>
         )
     });
 }

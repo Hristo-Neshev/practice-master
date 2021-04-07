@@ -7,8 +7,8 @@ import './AddRepertoireForm.scss';
 const AddRepertoireForm = (props) => {
     const [title, setTitle] = useState('');
     const [composer, setComposer] = useState('');
-    const [minutes, setMinutes] = useState('минути');
-    const [seconds, setSeconds] = useState('секунди');
+    const [minutes, setMinutes] = useState('');
+    const [seconds, setSeconds] = useState('');
 
     const [notificationMessage, setNotificationMessage] = useState(null);
 

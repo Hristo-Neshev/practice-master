@@ -76,7 +76,7 @@ const CreateConcert = (props) => {
             updateConcert(concertToUpdate.objectId ,concert)
             .then(response => response.json())
             .then(resData => {
-                history.push('/concerts')
+                history.push(`/concert/${concertToUpdate.objectId}`)
             }).catch(error => {
                 console.log(error);
                 setNotificationMessage(error.message)

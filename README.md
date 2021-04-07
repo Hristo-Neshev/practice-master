@@ -12,7 +12,12 @@ Repertoire page is the place where users can add or remove pieces to their reper
 
 ## Concert page
 
-On this page users can see list of their planned concerts or add new one. From there they can view details about concert or delete it. 
+On this page users can see list of their planned concerts or add new one. From there they can view details about concert or delete it.
+
+## Concert create/edit pages
+
+In this pages user can set/change details about place, date and stating hour of teh concert. Also can edit concert program and see total length of the concert.
+
 
 ## Concert details page
 

@@ -121,7 +121,7 @@ const CreateConcert = (props) => {
             case 'place': setPlace(e.target.value); break;
             case 'date': setDate(e.target.value); break;
             case 'time': setTime(e.target.value); break;
-
+            default: break;
         }
     }
 

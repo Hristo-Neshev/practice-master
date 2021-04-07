@@ -23,7 +23,7 @@ const DetailConcert = (props) => {
             }).catch(error => {
                 setNotificationMessage(error.message);
             });
-    }, [useRouteMatch]);
+    }, [routeMatch.params.id]);
 
  let list = null;
  

@@ -4,7 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import CreateConcert from '../CreateConcert/CreateConcert';
 import LoadingSpinner from '../../../../components/UI/LoadingSpinner/LoadingSpinner';
 import Notification from '../../../../components/UI/Notification/Notification';
-import { getConcertById, updateConcert } from '../../../../services/concertServices';
+import { getConcertById } from '../../../../services/concertServices';
 import './EditConcert.scss';
 
 const EditConcert = (props) => {

@@ -26,16 +26,16 @@ const DetailConcert = (props) => {
             });
     }, [routeMatch.params.id]);
 
- let list = null;
- let totalLength = '';
-if(concert.concertProgram) {
-    totalLength = timeCalculator(concert.concertProgram);
-    list = concert.concertProgram.map(piece => {
-        return (
-            <li key={piece.objectId}>{piece.title} - {piece.composer}</li>
-        )
-    });
-}
+    let list = null;
+    let totalLength = '';
+    if (concert.concertProgram) {
+        totalLength = timeCalculator(concert.concertProgram);
+        list = concert.concertProgram.map(piece => {
+            return (
+                <li key={piece.objectId}>{piece.title} - {piece.composer}</li>
+            )
+        });
+    }
 
     return (
         <section className="details-container">
@@ -44,11 +44,11 @@ if(concert.concertProgram) {
             <section className="details">
                 <section className="details-info">
                     <h2>Информация</h2>
-                   <ul>
-                   <li>Място: {concert.place}</li>
-                    <li>Дата: {concert.concertDate}</li>
-                    <li>Начален час: {concert.concertTime}</li>
-                   </ul>
+                    <ul>
+                        <li>Място: {concert.place}</li>
+                        <li>Дата: {concert.concertDate}</li>
+                        <li>Начален час: {concert.concertTime}</li>
+                    </ul>
                 </section>
                 <section className="details-list">
                     <h2>Програма</h2>
@@ -60,7 +60,8 @@ if(concert.concertProgram) {
             </section>
             <section className="link-to-edit-container">
 
-        <Link to={`/editConcert/${concert.objectId}`} className="link-to-edit">Редактирай концерта</Link>
+                <Link to={`/editConcert/${concert.objectId}`} className="link-to-edit">Редактирай концерта</Link>
+                <Link to={`/concerts`} className="link-to-edit">Назад</Link>
             </section>
         </section>
     )

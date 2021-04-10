@@ -1,6 +1,7 @@
 # About Practice Master
 
 Practice Mater is organizer for musicians - professional and amateur. 
+The app is deployed at https://reverent-bartik-438439.netlify.app/
 
 This project have Home Guest, Register and Login  pages open to anyone.
 In registration form all fields are required. If some field is empty or the data is not valid notification message is shown.

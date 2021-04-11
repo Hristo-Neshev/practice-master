@@ -64,7 +64,7 @@ function Register(props) {
                         <input type="email" required placeholder="Email" id="email" name="email" value={email} onChange={onChangeEmailHandler} />
                         <input type="password" minLength="6" placeholder="Парола" id="password" name="password" value={password} onChange={onChangePasswordHandler} />
                         <input type="password" minLength="6" placeholder="Повтори парола" id="rePassword" name="rePassword" value={rePassword} onChange={onChangeRePasswordHandler} />
-                        <input className='input-btn' type="submit" value="Регистрирай се" />
+                        <input className='input-btn' id="reg-btn" type="submit" value="Регистрaция" />
                     </form>
                 </div>
             </section>

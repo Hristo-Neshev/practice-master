@@ -45,6 +45,10 @@ const CreateConcert = (props) => {
 
     const addPieceSubmitHandler = (event) => {
         event.preventDefault();
+        if(repertoire.length < 1) {
+            setNotificationMessage('Добавете произведения в репертоара!');
+            return;
+        }
         const currentPieceId = event.target["piece-select"].value;
         const currentPiece = repertoire.find(piece => piece.objectId === currentPieceId);
 

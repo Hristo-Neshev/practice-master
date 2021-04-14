@@ -1,7 +1,7 @@
 function timeCalculator(concertProgram) {
     let time = 0;
     concertProgram.forEach(piece => {
-        const [minutes, seconds] = piece.length.split(':');
+        let [minutes, seconds] = piece.length.split(':');
 
         if (seconds.length === 2) {
             const secondsArr = seconds.split('');
